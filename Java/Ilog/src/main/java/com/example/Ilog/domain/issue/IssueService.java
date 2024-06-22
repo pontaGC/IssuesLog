@@ -1,8 +1,11 @@
 package com.example.Ilog.domain.issue;
 
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 
-public class IssueService {
+@Service
+class IssueService implements IIssueService {
 
     public Iterable<IssueEntity> findAll(){
         return List.of(
