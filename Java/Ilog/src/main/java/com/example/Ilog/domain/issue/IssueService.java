@@ -2,6 +2,7 @@ package com.example.Ilog.domain.issue;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -16,7 +17,10 @@ class IssueService implements IIssueService {
         return this.issueRepository.findAll();
     }
 
+    // @Transactional ->　失敗した場合はロールバック、成功した場合はコミットしてくれる
+
     @Override
+    @Transactional
     public void create(String summary, String description) {
         this.issueRepository.insert(summary, description);
     }
