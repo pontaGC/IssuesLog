@@ -17,6 +17,11 @@ class IssueService implements IIssueService {
         return this.issueRepository.findAll();
     }
 
+    @Override
+    public IssueEntity findById(long id) {
+        return this.issueRepository.findById(id);
+    }
+
     // @Transactional ->　失敗した場合はロールバック、成功した場合はコミットしてくれる
 
     @Override

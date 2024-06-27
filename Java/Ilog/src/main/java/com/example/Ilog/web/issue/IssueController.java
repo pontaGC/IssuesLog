@@ -47,8 +47,7 @@ public class IssueController {
     // Get /issues/{issueId}
     @GetMapping("/{issueId}")
     public String showDetail(@PathVariable("issueId") long issueId, Model model){
-        var dummy = new IssueEntity(1, "概要", "説明");
-        model.addAttribute("issue", dummy);
+        model.addAttribute("issue", this.issueService.findById((issueId)));
         return "issues/detail";
     }
 

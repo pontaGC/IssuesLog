@@ -14,6 +14,9 @@ public interface IIssueRepository {
     @Select("select * from issues")
     List<IssueEntity> findAll();
 
+    @Select("select * from issues where id = #{id}")
+    IssueEntity findById(long id);
+
     // #{}はメソッド引数と対応
     @Insert("insert into issues (summary, description) values (#{summary}, #{description})")
     void insert(String summary, String description);
