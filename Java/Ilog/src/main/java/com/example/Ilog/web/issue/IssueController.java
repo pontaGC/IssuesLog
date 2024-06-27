@@ -1,15 +1,13 @@
 package com.example.Ilog.web.issue;
 
 import com.example.Ilog.domain.issue.IIssueService;
+import com.example.Ilog.domain.issue.IssueEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -45,4 +43,13 @@ public class IssueController {
         this.issueService.create(form.getSummary(), form.getDescription());
         return "redirect:/issues";
     }
+
+    // Get /issues/{issueId}
+    @GetMapping("/{issueId}")
+    public String showDetail(@PathVariable("issueId") long issueId, Model model){
+        var dummy = new IssueEntity(1, "概要", "説明");
+        model.addAttribute("issue", dummy);
+        return "issues/detail";
+    }
+
 }
