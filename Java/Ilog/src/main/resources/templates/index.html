@@ -1,10 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout(~{this::title}, ~{this::body})}">
 <head>
-    <meta charset="UTF-8">
     <title>トップページ | 課題管理アプリケーション</title>
 </head>
 <body>
-<h1>Hello, World!!</h1>
+<!--mt: margin top. mt-3はBootstrapのSpacingに分類されるクラス。他のクラスは公式ドキュメント参照-->
+<h1 class="mt-3">課題管理アプリケーション</h1>
+<ul>
+    <li>
+        <!--th:hrefの'@'はthymeleafでリンクを表すときのPrefix-->
+        <!--@{/issues}へ"/issues"リソースへ<a>タグのhref属性値の参照される-->
+        <!--thymeleafではナチュラルテンプレートというコンセプトが採用されており、
+        　　 thymeleaf機能なしでもHTMLの内容が確認できる-->
+        <a href="./issues/list.html" th:href="@{/issues}">課題一覧</a>
+    </li>
+</ul>
 </body>
 </html>
